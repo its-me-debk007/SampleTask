@@ -1,8 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.model.Entry
 import com.example.myapplication.databinding.ItemTextviewBinding
 
 class MyRecyclerAdapter(

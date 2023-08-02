@@ -1,5 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.repository
 
+import com.example.myapplication.network.ApiService
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Elevated"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    android:layout_marginVertical="8dp"
+    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/disabledTextColor">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp">
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/product_img" />
+
+        <TextView
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_background"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingHorizontal="4dp"
+            android:text="15% off"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Bru Instant Coffee Bru Instant Coffee Bru Instant"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_img" />
+
+        <TextView
+            android:id="@+id/selected_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="1L"
+            android:textColor="@color/disabledTextColor"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/product_name"
+            app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+        <TextView
+            android:id="@+id/quantity_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/black_border_bg"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="4dp"
+            android:paddingEnd="2dp"
+            android:text="1L"
+            android:textSize="12sp"
+            app:drawableEndCompat="@drawable/ic_dropdown2"
+            app:layout_constraintStart_toEndOf="@+id/selected_quantity"
+            app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/selected_quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/selected_quantity"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <TextView
+            android:id="@+id/old_mrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/mrp_899"
+            android:textColor="@color/disabledTextColor"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/selected_quantity"
+            app:layout_constraintTop_toBottomOf="@+id/selected_quantity" />
+
+        <TextView
+            android:id="@+id/new_mrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="309/-"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/old_mrp"
+            app:layout_constraintStart_toEndOf="@id/old_mrp"
+            app:layout_constraintTop_toTopOf="@id/old_mrp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:background="@drawable/add_btn_background"
+            app:layout_constraintBottom_toBottomOf="@+id/add"
+            app:layout_constraintEnd_toEndOf="@+id/add"
+            app:layout_constraintTop_toTopOf="@+id/add"
+            app:srcCompat="@drawable/ic_add" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:srcCompat="@drawable/ic_add" />
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/blue_border_bg"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:text="Add"
+            android:textColor="@color/blue"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_mrp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

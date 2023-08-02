@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="snacks">snacks</string>
+    <string name="haldiram"><u>Haldiram</u></string>
+    <string name="mrp_899">MRP <strike>899</strike></string>
+    <string name="cut_mrp"><strike>899</strike></string>
+    <string name="deliver_to">Deliver to: <font color="#8A8A8A">Sudama nagar, Indore, Madhya Pradesh</font></string>
 </resources>

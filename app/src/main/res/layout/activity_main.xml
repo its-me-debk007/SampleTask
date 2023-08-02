@@ -1,15 +1,422 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:overScrollMode="never">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:background="@color/white"
+        android:paddingBottom="16dp"
+        tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:menu="@menu/toolbar_menu"
+                app:title="@null" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/snacks"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:contentDescription="@string/snacks"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+            app:srcCompat="@drawable/snacks" />
+
+        <TableLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/snacks" />
+
+        <TextView
+            android:id="@+id/delivery_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Delivery by:"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+        <TextView
+            android:id="@+id/delivery_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/yellow_background"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="4dp"
+            android:text="1/2 Hour"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/delivery_by"
+            app:layout_constraintStart_toEndOf="@id/delivery_by"
+            app:layout_constraintTop_toTopOf="@id/delivery_by" />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Haldiram bhujia sev popular almonds (500 g)"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/delivery_by"
+            app:layout_constraintTop_toBottomOf="@id/delivery_by" />
+
+        <TextView
+            android:id="@+id/product_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/haldiram"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/product_name"
+            app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+        <TextView
+            android:id="@+id/old_mrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/mrp_899"
+            android:textColor="@color/disabledTextColor"
+            app:layout_constraintStart_toStartOf="@+id/product_company"
+            app:layout_constraintTop_toBottomOf="@id/product_company" />
+
+        <TextView
+            android:id="@+id/new_mrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="₹309"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/old_mrp"
+            app:layout_constraintStart_toEndOf="@id/old_mrp"
+            app:layout_constraintTop_toTopOf="@id/old_mrp" />
+
+        <TextView
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/green_background"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="0dp"
+            android:text="65% off"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/new_mrp"
+            app:layout_constraintStart_toEndOf="@id/new_mrp"
+            app:layout_constraintTop_toTopOf="@+id/new_mrp" />
+
+        <TextView
+            android:id="@+id/rate_per_gram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="\@154.5/250g"
+            android:textColor="@color/disabledTextColor"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/old_mrp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/old_mrp" />
+
+        <TextView
+            android:id="@+id/free_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="FREE Delivery on order above ₹3000 "
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/old_mrp"
+            app:layout_constraintTop_toBottomOf="@id/old_mrp" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lightYellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/free_delivery" />
+
+
+        <TextView
+            android:id="@+id/select_variant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Select a variant"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/free_delivery"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/variant_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/select_variant"
+            app:layout_constraintTop_toBottomOf="@+id/select_variant"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_variant" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grayLineColor"
+            app:layout_constraintEnd_toEndOf="@+id/variant_recycler_view"
+            app:layout_constraintStart_toStartOf="@+id/variant_recycler_view"
+            app:layout_constraintTop_toBottomOf="@id/variant_recycler_view" />
+
+        <TextView
+            android:id="@+id/delivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/deliver_to"
+            app:layout_constraintEnd_toStartOf="@+id/tag"
+            app:layout_constraintStart_toStartOf="@+id/free_delivery"
+            app:layout_constraintTop_toBottomOf="@id/line2" />
+
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/border_background"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="4dp"
+            android:text="Home"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/delivery"
+            app:layout_constraintEnd_toStartOf="@id/change"
+            app:layout_constraintTop_toTopOf="@+id/delivery" />
+
+        <TextView
+            android:id="@+id/change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/light_yellow_background"
+            android:padding="4dp"
+            android:text="Change"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/delivery" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/grayLineColor"
+            app:layout_constraintEnd_toEndOf="@+id/change"
+            app:layout_constraintStart_toStartOf="@+id/delivery"
+            app:layout_constraintTop_toBottomOf="@id/delivery" />
+
+        <ImageView
+            android:id="@+id/seller_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/sold_by"
+            app:layout_constraintStart_toStartOf="@id/line3"
+            app:layout_constraintTop_toTopOf="@+id/sold_by"
+            app:srcCompat="@drawable/seller" />
+
+        <TextView
+            android:id="@+id/sold_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="Sold by: Khalifa"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/seller_img"
+            app:layout_constraintTop_toBottomOf="@id/line3" />
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grayLineColor"
+            app:layout_constraintEnd_toEndOf="@+id/change"
+            app:layout_constraintStart_toStartOf="@+id/delivery"
+            app:layout_constraintTop_toBottomOf="@id/sold_by" />
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            android:text="Details"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/seller_img"
+            app:layout_constraintTop_toBottomOf="@id/line4" />
+
+        <TextView
+            android:id="@+id/highlights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:singleLine="true"
+            android:text="Highlights"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/details"
+            app:layout_constraintTop_toBottomOf="@id/details" />
+
+        <ImageView
+            android:id="@+id/ic_clock"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:layout_constraintBottom_toBottomOf="@id/mfg_date"
+            app:layout_constraintStart_toStartOf="@id/highlights"
+            app:layout_constraintTop_toTopOf="@+id/expiry_date"
+            app:srcCompat="@drawable/ic_clock" />
+
+        <TextView
+            android:id="@+id/expiry_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="Expiry date 17 Oct 2022"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/ic_clock"
+            app:layout_constraintTop_toBottomOf="@id/highlights" />
+
+        <TextView
+            android:id="@+id/mfg_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true"
+            android:text="Manufacturing date 17 Oct 2022"
+            android:textColor="@color/disabledTextColor"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/expiry_date"
+            app:layout_constraintTop_toBottomOf="@+id/expiry_date" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@+id/ic_clock"
+            app:layout_constraintTop_toBottomOf="@+id/ic_clock"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_details" />
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lightYellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_recycler_view" />
+
+        <TextView
+            android:id="@+id/similar_products"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Similar products"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/free_delivery"
+            app:layout_constraintTop_toBottomOf="@id/line5" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/similar_prod_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/similar_products"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_product" />
+
+        <TextView
+            android:id="@+id/most_viewed_products"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Most viewed products"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/free_delivery"
+            app:layout_constraintTop_toBottomOf="@id/similar_prod_recycler_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/most_viewed_prod_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/most_viewed_products"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_product" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

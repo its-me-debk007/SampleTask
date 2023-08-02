@@ -1,5 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.di
 
+import com.example.myapplication.network.ApiService
+import com.example.myapplication.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
